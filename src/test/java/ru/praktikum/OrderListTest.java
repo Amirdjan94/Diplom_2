@@ -1,5 +1,6 @@
 package ru.praktikum;
 
+import io.qameta.allure.junit4.DisplayName;
 import io.restassured.response.Response;
 import org.junit.Before;
 import org.junit.Test;
@@ -28,7 +29,8 @@ public class OrderListTest {
     }
 
     @Test
-    public void getOrderListWithAuth(){
+    @DisplayName("Check order list with authorization")
+    public void getOrderListWithAuthTest(){
         response = orderList.getOrderListWithAuth(user);
         userAction.deleteUser(userAction.login(user));
         response.then()
@@ -37,7 +39,8 @@ public class OrderListTest {
                 .and().statusCode(SC_OK);
     }
     @Test
-    public void getOrderListWithoutAuth(){
+    @DisplayName("Check order list without authorization")
+    public void getOrderListWithoutAuthTest(){
         response = orderList.getOrderListWithoutAuth();
         response.then()
                 .assertThat().body("success", equalTo(false))

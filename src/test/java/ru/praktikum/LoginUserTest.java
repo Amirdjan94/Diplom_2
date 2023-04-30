@@ -1,5 +1,6 @@
 package ru.praktikum;
 
+import io.qameta.allure.junit4.DisplayName;
 import io.restassured.response.Response;
 import org.junit.After;
 import org.junit.Before;
@@ -35,6 +36,7 @@ public class LoginUserTest {
     }
 
     @Test
+    @DisplayName("Check user authorization")
     public void loginUserTest(){
         response = userAction.login(user);
         response.then()
@@ -44,6 +46,7 @@ public class LoginUserTest {
                 .and().assertThat().body("user.name", equalTo(user.getName()));;
     }
     @Test
+    @DisplayName("Check user authorization with incorrect password")
     public void loginUserWithIncorrectPasswordTest(){
         response = userAction.loginUserWithIncorrectPassword(user);
         response.then()
@@ -52,6 +55,7 @@ public class LoginUserTest {
                 .and().assertThat().body("message", equalTo(LOGIN_USER_ERROR));
     }
     @Test
+    @DisplayName("Check user authorization with incorrect email")
     public void loginUserWithIncorrectEmailTest(){
         response = userAction.loginUserWithIncorrectEmail(user);
         response.then()

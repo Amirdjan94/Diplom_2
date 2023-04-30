@@ -1,5 +1,6 @@
 package ru.praktikum;
 
+import io.qameta.allure.junit4.DisplayName;
 import io.restassured.response.Response;
 import org.junit.Before;
 import org.junit.Test;
@@ -34,6 +35,7 @@ public class CreateOrderTest {
     }
 
     @Test
+    @DisplayName("Check create order with authorization user and with ingredient")
     public void createOrderWithAuthWithIngredientTest(){
         response = createOrder.createOrderWithAuthWithIngredient(user);
         userAction.deleteUser(userAction.login(user));
@@ -44,6 +46,7 @@ public class CreateOrderTest {
                 .and().statusCode(SC_OK);
     }
     @Test
+    @DisplayName("Check create order without authorization user and with ingredient")
     public void createOrderWithoutAuthWithIngredientTest(){
         response = createOrder.createOrderWithoutAuthWithIngredient();
         response.then()
@@ -52,6 +55,7 @@ public class CreateOrderTest {
                 .and().statusCode(SC_OK);
     }
     @Test
+    @DisplayName("Check create order with authorization user and without ingredient")
     public void createOrderWithAuthWithoutIngredientTest(){
         response = createOrder.createOrderWithAuthWithoutIngredient(user);
         userAction.deleteUser(userAction.login(user));
@@ -61,6 +65,7 @@ public class CreateOrderTest {
                 .and().statusCode(SC_BAD_REQUEST);
     }
     @Test
+    @DisplayName("Check create order without authorization user and without ingredient")
     public void createOrderWithoutAuthWithoutIngredientTest(){
         response = createOrder.createOrderWithoutAuthWithoutIngredient();
         response.then()
@@ -69,11 +74,13 @@ public class CreateOrderTest {
                 .and().statusCode(SC_BAD_REQUEST);
     }
     @Test
+    @DisplayName("Check create order without authorization user and with wrong ingredient")
     public void createOrderWithoutAuthWithWrongIngredientTest(){
         response = createOrder.createOrderWithoutAuthWithWrongIngredient();
         response.then().statusCode(SC_INTERNAL_SERVER_ERROR);
     }
     @Test
+    @DisplayName("Check create order with authorization user and with wrong ingredient")
     public void createOrderWithAuthWithWrongIngredientTest(){
         response = createOrder.createOrderWithAuthWithWrongIngredient(user);
         userAction.deleteUser(userAction.login(user));

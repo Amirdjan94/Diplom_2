@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: ru.praktikum.ChangeUserInfoTest
+-------------------------------------------------------------------------------
+Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 89.522 s - in ru.praktikum.ChangeUserInfoTest

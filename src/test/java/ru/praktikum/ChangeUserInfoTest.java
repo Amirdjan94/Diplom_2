@@ -1,5 +1,6 @@
 package ru.praktikum;
 
+import io.qameta.allure.junit4.DisplayName;
 import io.restassured.response.Response;
 import org.junit.After;
 import org.junit.Before;
@@ -33,6 +34,7 @@ public class ChangeUserInfoTest {
     }
 
     @Test
+    @DisplayName("Check change email user with authorization")
     public void changeUserEmailWithAuthTest(){
         response = userChange.changeEmailUserWithAuth(user);
         response.then()
@@ -44,6 +46,7 @@ public class ChangeUserInfoTest {
     }
 
     @Test
+    @DisplayName("Check change name user with authorization")
     public void changeUserNameWithAuthTest(){
         response = userChange.changeNameUserWithAuth(user);
         response.then()
@@ -55,6 +58,7 @@ public class ChangeUserInfoTest {
     }
 
     @Test
+    @DisplayName("Check change email user without authorization")
     public void changeUserEmailWithoutAuthTest(){
         response = userChange.changeEmailUserWithoutAuth(user);
         response.then()
@@ -64,6 +68,7 @@ public class ChangeUserInfoTest {
     }
 
     @Test
+    @DisplayName("Check change name user without authorization")
     public void changeUserNameWithoutAuthTest(){
         response = userChange.changeNameUserWithoutAuth(user);
         response.then()
@@ -72,6 +77,7 @@ public class ChangeUserInfoTest {
                 .and().statusCode(SC_UNAUTHORIZED);
     }
     @Test
+    @DisplayName("Check change email (on exist email) user with authorization")
     public void changeExistEmailWithAuthTest(){
         String emailFirstUser = user.getEmail();
         userSecond = UserGenerator.getUser();

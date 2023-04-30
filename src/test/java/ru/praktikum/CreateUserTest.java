@@ -1,5 +1,6 @@
 package ru.praktikum;
 
+import io.qameta.allure.junit4.DisplayName;
 import io.restassured.response.Response;
 import org.junit.After;
 import org.junit.Before;
@@ -28,6 +29,7 @@ public class CreateUserTest {
     }
 
     @Test
+    @DisplayName("Check create user")
     public void createNewUserTest(){
         response = createUser.createUser(user);
         response.then()
@@ -38,6 +40,7 @@ public class CreateUserTest {
     }
 
     @Test
+    @DisplayName("Check create the same user")
     public void createTheSameUserTest() {
         response = createUser.createUser(user);
         Response response2 = createUser.createUser(user);
@@ -47,6 +50,7 @@ public class CreateUserTest {
                 .and().statusCode(SC_FORBIDDEN);
     }
     @Test
+    @DisplayName("Check create user without password")
     public void createUserWithoutPassowordTest(){
         response = createUser.createUserWithoutPassoword(user);
         response.then()
@@ -55,6 +59,7 @@ public class CreateUserTest {
                 .and().statusCode(SC_FORBIDDEN);
     }
     @Test
+    @DisplayName("Check create user without email")
     public void createUserWithoutEmailTest(){
         response = createUser.createUserWithoutEmail(user);
         response.then()
@@ -63,6 +68,7 @@ public class CreateUserTest {
                 .and().statusCode(SC_FORBIDDEN);
     }
     @Test
+    @DisplayName("Check create user without name")
     public void createUserWithoutNameTest(){
         response = createUser.createUserWithoutName(user);
         response.then()
