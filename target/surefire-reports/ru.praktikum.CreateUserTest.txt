@@ -1,4 +1,0 @@
--------------------------------------------------------------------------------
-Test set: ru.praktikum.CreateUserTest
--------------------------------------------------------------------------------
-Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 2.243 s - in ru.praktikum.CreateUserTest
