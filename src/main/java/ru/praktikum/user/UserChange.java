@@ -1,5 +1,6 @@
 package ru.praktikum.user;
 
+import io.qameta.allure.Step;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
 import ru.praktikum.data.User;
@@ -17,9 +18,12 @@ public class UserChange {
     private UserInfo userInfo;
     private UserAction userAction = new UserAction();
     private UserCreate userCreate = new UserCreate();
+
     public UserChange() {
         RestAssured.baseURI = BASE_URI;
     }
+
+    @Step("Send request for change email user with authorization")
     public Response changeEmailUserWithAuth (User user) {
         // Создаю пользователя и получаю токен используя десериализацию
         response = userCreate.createUser(user);
@@ -40,6 +44,8 @@ public class UserChange {
                 .when()
                 .patch(CHANGE_USER_PATH);
     }
+
+    @Step("Send request for change name user with authorization")
     public Response changeNameUserWithAuth (User user) {
         // Создаю пользователя и получаю токен используя десериализацию
         response = userCreate.createUser(user);
@@ -60,6 +66,8 @@ public class UserChange {
                 .when()
                 .patch(CHANGE_USER_PATH);
     }
+
+    @Step("Send request for change email user without authorization")
     public Response changeEmailUserWithoutAuth (User user) {
         // Создаю пользователя
         response = userCreate.createUser(user);
@@ -78,6 +86,8 @@ public class UserChange {
                 .when()
                 .patch(CHANGE_USER_PATH);
     }
+
+    @Step("Send request for change name user without authorization")
     public Response changeNameUserWithoutAuth (User user) {
         // Создаю пользователя и получаю токен используя десериализацию
         response = userCreate.createUser(user);
@@ -96,6 +106,8 @@ public class UserChange {
                 .when()
                 .patch(CHANGE_USER_PATH);
     }
+
+    @Step("Send request for change exist email with authorization")
     public Response changeExistEmailWithAuth (User user, User userSecond, String email) {
         // Создаю 2 пользователя и получаю токен первого пользователя используя десериализацию
         userCreate.createUser(userSecond);

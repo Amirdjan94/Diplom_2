@@ -17,8 +17,6 @@ import static ru.praktikum.data.Const.LOGIN_USER_ERROR;
 
 public class LoginUserTest {
     private User user;
-    private String accessToken;
-    private UserCreds userCreds;
     private UserAction userAction;
     private Response response;
     private String userEmail;

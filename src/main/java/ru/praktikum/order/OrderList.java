@@ -22,6 +22,7 @@ public class OrderList {
         RestAssured.baseURI = BASE_URI;
     }
 
+    @Step("Send request for get order list with authorization")
     public Response getOrderListWithAuth(User user) {
         createOrder.createOrderWithAuthWithIngredient(user);
         response = userAction.login(user);
@@ -31,6 +32,8 @@ public class OrderList {
                 .auth().oauth2(accessToken)
                 .get(ORDER_PATH);
     }
+
+    @Step("Send request for get order list without authorization")
     public Response getOrderListWithoutAuth() {
         return given()
                 .auth().oauth2("")
